@@ -2,7 +2,7 @@
 
 ## Logga in
 ### Beskrivning 
-Detta anropet används för att logga in en registerad användare. Anropet skickas som en POST-förfrågan med JSON-data som innehåller användarens autentiseringsuppgifter. Om anropet lyckas returneras en success boolian, status-kod samt ett meddelande. 
+Detta anropet används för att logga in en registerad användare. Anropet skickas som en POST-förfrågan med JSON-data som innehåller användarens autentiseringsuppgifter. Om anropet lyckas returneras en success: true, status: 200, samt ett meddelande. 
 ### URL 
 ```
     POST http://localhost:1337/auth/login
@@ -17,7 +17,7 @@ Detta anropet används för att logga in en registerad användare. Anropet skick
 
 ## Logga ut 
 ### Beskrivning 
-Detta anropet används för att logga ut den befintliga användaren. Anropet skickas som en POST-förfrågan och behöver inte ha någon JSON-data. Om anropet lyckas returneras en success boolian, status-kod samt ett meddelande.
+Detta anropet används för att logga ut den befintliga användaren. Anropet skickas som en POST-förfrågan och behöver inte ha någon JSON-data. Om anropet lyckas returneras en success: true,, status : 200 samt ett meddelande.
 ### URL 
 ```
     POST http://localhost:1337/auth/logout
@@ -25,7 +25,7 @@ Detta anropet används för att logga ut den befintliga användaren. Anropet ski
 
 ## Registera ny användare
 ### Beskrivning 
-Detta anropet används för att registrera en ny användare i systemet. Anropet skickas som en POST-förfrågan med JSON-data som innehåller användarens autentiseringsuppgifter. Om anropet lyckas returneras en success boolian, status-kod samt ett meddelande.
+Detta anropet används för att registrera en ny användare i systemet. Anropet skickas som en POST-förfrågan med JSON-data som innehåller användarens autentiseringsuppgifter. Om anropet lyckas returneras en success: true,, status : 201 samt ett meddelande.
 ### URL 
 ```
     POST http://localhost:1337/auth/register
@@ -45,7 +45,7 @@ Krav på JSON-data i body.
 
 ## Hämta meny   
 ### Beskrivning 
-Detta anropet används för att hämta hela menyn. Anropet skickas som en GET-förfrågan. Om anropet lyckas returneras en success boolian, status-kod samt data med en array av alla produkter i databasen.
+Detta anropet används för att hämta hela menyn. Anropet skickas som en GET-förfrågan. Om anropet lyckas returneras en success: true,, status : 200 samt data med en array av alla produkter i databasen.
 ### URL 
 ```
     GET http://localhost:1337/menu/
@@ -53,7 +53,7 @@ Detta anropet används för att hämta hela menyn. Anropet skickas som en GET-f�
 
 ## Lägg till produkt i meny
 ### Beskrivning 
-Detta anropet används av ADMINS för att lägga till en ny produkt i menyn. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med den nya produkten.
+Detta anropet används av ADMINS för att lägga till en ny produkt i menyn. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med den nya produkten.
 ### URL 
 ```
     POST http://localhost:1337/menu/add
@@ -73,7 +73,7 @@ Krav på JSON-data i body.
 
 ## Ändra en produkt i menyn
 ### Beskrivning 
-Detta anropet används av ADMINS för att ändra en produkts information i menyn. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med den updaterade produkten. 
+Detta anropet används av ADMINS för att ändra en produkts information i menyn. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med den updaterade produkten. 
 ### URL 
 ```
     POST http://localhost:1337/menu/change/:id
@@ -95,7 +95,7 @@ Krav på JSON-data i body.
 
 ## Ta bort en prodikt i menyn
 ### Beskrivning 
-Detta anropet används av ADMINS för att ta bort en produkt i menyn. Anropet skickas som en Delete-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med den bortagna produkten.
+Detta anropet används av ADMINS för att ta bort en produkt i menyn. Anropet skickas som en Delete-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med den bortagna produkten.
 ### URL 
 ```
     DELETE http://localhost:1337/menu/delete/:id
@@ -105,7 +105,7 @@ Detta anropet används av ADMINS för att ta bort en produkt i menyn. Anropet sk
 
 ## Hämta varukorg
 ### Beskrivning 
-Detta anropet används för att hämta information om befintlig varukorg. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en success boolian, status-kod samt data som innehåller varukorgen, fraktkostnad, tillämpad rabatt och totalkostnad.  
+Detta anropet används för att hämta information om befintlig varukorg. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en success: true,, status : 200 samt data som innehåller varukorgen, fraktkostnad, tillämpad rabatt och totalkostnad.  
 ### URL 
 ```
     GET http://localhost:1337/cart/
@@ -113,7 +113,7 @@ Detta anropet används för att hämta information om befintlig varukorg. Anrope
 
 ## Lägg til produkt i varukorg
 ### Beskrivning 
-Detta anropet används för att lägga till en produkt i varukorgen. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med den uppdaterade varukorgen. 
+Detta anropet används för att lägga till en produkt i varukorgen. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med den uppdaterade varukorgen. 
 ### URL 
 ```
     POST http://localhost:1337/cart/:id
@@ -123,7 +123,7 @@ Detta anropet används för att lägga till en produkt i varukorgen. Anropet ski
 
 ## Ta bort en produkt i varukorg
 ### Beskrivning 
-Detta anropet används för att ta bort en produkt i varukorgen. Anropet skickas som en Delete-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med den uppdaterade varukorgen.
+Detta anropet används för att ta bort en produkt i varukorgen. Anropet skickas som en Delete-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med den uppdaterade varukorgen.
 ### URL 
 ```
     DELETE http://localhost:1337/cart/:id
@@ -141,7 +141,7 @@ Detta anropet används för att få ut information om Airbeans. Anropet skickas 
 
 ## Lägg till nytt erbjudande
 ### Beskrivning 
-Detta anropet används av ADMINS för att lägga till ett nytt erbjudande mellan två drycker i menyn. Anropet skickas som en Post-förfrågan med JSON-data som innehåller en array med två titlar på drycker i menyn och erbjudande priset. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med det skapade erbjudandet.
+Detta anropet används av ADMINS för att lägga till ett nytt erbjudande mellan två drycker i menyn. Anropet skickas som en Post-förfrågan med JSON-data som innehåller en array med två titlar på drycker i menyn och erbjudande priset. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med det skapade erbjudandet.
 ### URL 
 ```
     POST http://localhost:1337/promotions/add
@@ -157,7 +157,7 @@ Krav på JSON-data i body.
 
 ## Visa alla erbjudande
 ### Beskrivning 
-Detta anropet används för att visa alla erbjudande som ligger i databasen. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en success boolian, status-kod samt data med alla erbjudanden i databasen.
+Detta anropet används för att visa alla erbjudande som ligger i databasen. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en success: true,, status : 200 samt data med alla erbjudanden i databasen.
 ### URL 
 ```
     GET http://localhost:1337/promotions/
@@ -165,7 +165,7 @@ Detta anropet används för att visa alla erbjudande som ligger i databasen. Anr
 
 ## Visa användarens senaste skapade order
 ### Beskrivning 
-Detta anropet används för att visa information om den inloggade användarens senast skapade ordern. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en succuss boolian, status-kod, ett meddelande som berättar om order är på väg eller levererad samt order som innehåller information om ordern. 
+Detta anropet används för att visa information om den inloggade användarens senast skapade ordern. Anropet skickas som en Get-förfrågan. Om anropet lyckas returneras en succuss boolean, status : 200, ett meddelande som berättar om order är på väg eller levererad samt order som innehåller information om ordern. 
 ### URL 
 ```
     GET http://localhost:1337/orders/status
@@ -173,7 +173,7 @@ Detta anropet används för att visa information om den inloggade användarens s
 
 ## Visa användarens skapade ordrar
 ### Beskrivning 
-Detta anropet används för att visa information om den inloggade användarens alla skapade ordrar. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, totalpris för alla ordrar samt order som innehåller alla användarens skapade ordrar. 
+Detta anropet används för att visa information om den inloggade användarens alla skapade ordrar. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, totalpris för alla ordrar samt order som innehåller alla användarens skapade ordrar. 
 ### URL 
 ```
     POST http://localhost:1337/orders/user
@@ -181,7 +181,7 @@ Detta anropet används för att visa information om den inloggade användarens a
 
 ## Skapa en ny order
 ### Beskrivning 
-Detta anropet används för att skapa en order av varukorgen. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success boolian, status-kod, ett meddelande samt data med information om den skapade ordern. 
+Detta anropet används för att skapa en order av varukorgen. Anropet skickas som en Post-förfrågan. Om anropet lyckas returneras en success: true,, status : 200, ett meddelande samt data med information om den skapade ordern. 
 ### URL 
 ```
     POST http://localhost:1337/orders/
