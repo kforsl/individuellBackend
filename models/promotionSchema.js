@@ -1,5 +1,6 @@
 import Joi from "joi";
 
+//Schema som används av joiHandler vid regestrering av ny promotion.
 const promotionSchema = Joi.object({
     products: Joi.array().required()
         .min(2).message('Du måste skriva in två produkter för att skapa ett nytt erbjudande')

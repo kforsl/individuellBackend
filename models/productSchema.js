@@ -1,5 +1,6 @@
 import Joi from "joi";
 
+//Schema som används av joiHandler vid regestrering av ny produkt.
 const productSchema = Joi.object({
     title: Joi.string()
         .min(3).message("Din titel måste innehålla minst 3 tecken")

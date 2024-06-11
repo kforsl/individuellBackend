@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import nedb from "nedb-promises";
+import { freeUserShipping } from "../utility/promotionFunctions.js"
 
 //Skapa en db för users
 const database = new nedb({ filename: "./data/users.db", autoload: true });
@@ -21,6 +22,7 @@ export const loginUser = async (req, res, next) => {
         //Om/När vi hittar användare sätter vi den currentUser till authUser
         if (authUser) {
             global.currentUser = authUser;
+            global.shipping = freeUserShipping();
             res.status(200).json({
                 success: true,
                 status: 200,
@@ -42,6 +44,7 @@ export const loginUser = async (req, res, next) => {
 export const logoutUser = (req, res, next) => {
     if (global.currentUser) {
         global.currentUser = null;
+        global.shipping = freeUserShipping();
         res.status(200).json({
             success: true,
             status: 200,
@@ -96,6 +99,7 @@ export const registerUser = async (req, res, next) => {
         //Lägger in newUser i db och sätter den som currentUser
         await database.insert(newUser);
         global.currentUser = newUser;
+        global.shipping = freeUserShipping();
 
         const success = {
             success: true,

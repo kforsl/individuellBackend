@@ -21,6 +21,6 @@ router.post('/change/:id', adminHandler(), joiHandler(productSchema), changeProd
 
 // http://localhost:1337/menu/delete/:id
 // ta bort en product
-router.delete('/delete/:id', adminHandler(), deleteProduct);
+router.delete('/remove/:id', adminHandler(), deleteProduct);
 
 export default router;

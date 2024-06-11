@@ -20,7 +20,7 @@ export const getCart = async (req, res, next) => {
         let totalPrice = 0;
 
         //Variabel för användning av promotions (Skickar in cart, shipping och menu till runPromotions som skickar tillbaka dem updated)
-        const { cart: updatedCart, shipping: updatedShipping } = await runPromotions(cart, menu, global.shipping);
+        // const { cart: updatedCart, shipping: updatedShipping } = await runPromotions(cart, menu, global.shipping);
 
         cart.forEach(item => totalPrice += item.price);
 
@@ -28,10 +28,10 @@ export const getCart = async (req, res, next) => {
             success: true,
             status: 200,
             data: {
-                cart: updatedCart,
+                cart,
                 discount: global.discount,
-                shipping: updatedShipping,
-                total: totalPrice + updatedShipping - global.discount
+                shipping,
+                total: totalPrice + shipping - global.discount
             }
         });
     } catch (error) {
@@ -57,6 +57,9 @@ export const addToCart = async (req, res, next) => {
 
         cart.push(foundItem);
 
+        //Variabel för användning av promotions (Skickar in cart, shipping och menu till runPromotions som skickar tillbaka dem updated)
+        await runPromotions(cart, menu, global.shipping);
+
         res.status(200).send({
             success: true,
             status: 200,
@@ -71,7 +74,7 @@ export const addToCart = async (req, res, next) => {
 
 // @desc DELETE Ta bort från varukorgen
 // @route /cart/:id
-export const removeFromCart = (req, res, next) => {
+export const removeFromCart = async (req, res, next) => {
     const id = parseInt(req.params.id);
     const foundItem = cart.find(item => item.id === id);
     // Om produkten inte finns i varukorgen skickas ett felmeddelande
@@ -84,6 +87,9 @@ export const removeFromCart = (req, res, next) => {
     }
     // Om produkten finns i varukorgen letar vi upp dess index och tar bort den
     cart.splice(cart.indexOf(foundItem), 1)
+
+    await runPromotions(cart, menu, global.shipping);
+
     res.status(200).send({
         success: true,
         status: 200,

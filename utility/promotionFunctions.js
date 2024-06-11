@@ -35,24 +35,31 @@ const goBankrupt = (cart, shipping) => {
     return { cart, shipping };
 }
 
+// Funktion som kontrollerar om någon skapad promotion är aktiv 
 export const handleDiscounts = async (cart, products, specialPrice) => {
+    // Kontrollerar så att varukorgen inte har mer produkter än vad ett erbjudande innehåller
     if (cart.length <= products.length) {
         let count = 0;
+        // Kontrollerar så att alla produkter i varukorgen ingår i erbjudandet,
         cart.forEach(item => {
             if (products.includes(item.title)) {
                 count++;
             }
         });
+        // Lägger ihop priset på varukorgens innehåll är ett giltigt erbjudande
         if (count === products.length) {
             let price = 0;
             cart.forEach(c => {
                 price += c.price;
             });
+            // returnerar skillnaden på varukorgs priset och specialpriset 
             return price - specialPrice;
         } else {
+            // om Varukorgen inte har ett giltigt erbjudande returnera 0
             return 0;
         }
     } else {
+        // om varukorgen har för många produkter returnera 0 
         return 0;
     }
 }
